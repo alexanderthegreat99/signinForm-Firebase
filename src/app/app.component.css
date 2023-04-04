@@ -1,0 +1,7 @@
+mat-toolbar {
+    justify-content: space-between;
+    background-color: rgb(230, 225, 225);
+}
+.content {
+    padding:32px;
+}
