@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 
-import { Auth, authState } from '@angular/fire/auth';
+import { Auth, authState, } from '@angular/fire/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { from } from 'rxjs';
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile} from 'firebase/auth';
+import { from, switchMap} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +15,10 @@ export class AuthenticationService {
   login(username:string, password: string){
     return from(signInWithEmailAndPassword(this.auth, username, password));
   }
+  signUp(email: string, password: string) {
+    return from(createUserWithEmailAndPassword(this.auth, email, password));
+  }
+
   logout(){
     return from(this.auth.signOut());
   }
