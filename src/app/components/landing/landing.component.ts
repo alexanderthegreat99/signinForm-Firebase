@@ -3,7 +3,7 @@ import { OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Router } from '@angular/router';
-import { HotToastService } from '@ngneat/hot-toast';
+
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',

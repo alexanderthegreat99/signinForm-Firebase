@@ -7,7 +7,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  //title = 'signinForm-Firebase';
+  title = 'signinForm-Firebase';
   constructor(
     public authService: AuthenticationService,
     private router: Router
