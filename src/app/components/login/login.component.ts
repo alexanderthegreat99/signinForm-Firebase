@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit{
     
     this.authService.login( email, password).subscribe(() => {
       this.toast.success({detail:"SUCCESS",summary:'You Sucessfully Logged In!', duration: 5000});
-
+      
       this.router.navigate(['/home']);
     }, err=>{
       this.toast.error({detail:"ERROR",summary:'Login failed! Try again.', duration: 5000})

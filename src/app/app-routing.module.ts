@@ -5,6 +5,7 @@ import { LandingComponent } from './components/landing/landing.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component'
 import { HomeComponent } from './components/home/home.component'
+import { ProfileComponent } from './components/profile/profile.component';
 import {
   canActivate,
   redirectLoggedInTo,
@@ -33,8 +34,13 @@ const routes: Routes = [
     component: HomeComponent,
     ...canActivate(redirectUnauthorizedToLogin),
   },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    ...canActivate(redirectUnauthorizedToLogin),
+  },
   
-]
+];
 
 @NgModule({
   declarations: [],

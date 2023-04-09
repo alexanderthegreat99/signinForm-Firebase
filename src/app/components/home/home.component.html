@@ -1,1 +1,2 @@
-<h1 *ngIf="user$ | async as user">Welcome to Ibay, {{user.email}}!</h1>
+<!-- <h1 *ngIf="user$ | async as user">Welcome to Ibay, {{user.displayName}}!</h1> -->
+<h1 *ngIf="user$ | async as user">Welcome to Ibay, {{user.displayName ? user.displayName : user.email}}!</h1>

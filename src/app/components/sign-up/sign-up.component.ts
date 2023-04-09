@@ -13,6 +13,7 @@ import { NgToastService } from 'ng-angular-popup';
 
 import { Router } from '@angular/router';
 import { switchMap} from 'rxjs';
+//import { UsersService } from 'src/app/services/users.service';
 
 export function passwordsMatchValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -82,13 +83,18 @@ export class SignUpComponent {
       return;
     }
 
-    this.authService.signUp( email, password).subscribe(() => {
+    this.authService
+    .signUp(name, email, password)
+    
+    .subscribe(() => {
       this.toast.success({detail:"SUCCESS",summary:'You Sucessfully Signed Up!', duration: 5000});
 
       this.router.navigate(['/home']);
     }, err=>{
       this.toast.error({detail:"ERROR",summary:'Sign Up failed! Try again.', duration: 5000})
     });
+    
+    
    console.log(this.signUpForm.value);
     console.log(this.signUpForm);
     this.signUpForm.reset();

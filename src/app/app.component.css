@@ -31,3 +31,7 @@ mat-toolbar {
 .padding{
   padding-left: 300px;
 }
+.profile-image-toolbar {
+  border-radius: 100%;
+  margin-right: 8px;
+}
