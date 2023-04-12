@@ -29,7 +29,7 @@ import {NgToastModule} from 'ng-angular-popup';
 import { MatMenuModule } from '@angular/material/menu';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { ProfileComponent } from './components/profile/profile.component';
-
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 
 
 @NgModule({
@@ -55,6 +55,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     //provideAuth(() => getAuth()),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
  //   AngularFireAuthModule,
    //HotToastModule.forRoot(),

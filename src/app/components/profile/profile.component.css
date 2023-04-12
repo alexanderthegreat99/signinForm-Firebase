@@ -10,4 +10,16 @@
     position:absolute;
     bottom: 10px;
     right: 25%;
-  }
+}
+.form-container {
+  max-width: 400px;
+}
+
+.row {
+  display: flex;
+  gap: 16px;
+}
+.save-button {
+  display: block;
+  margin: 0 auto;
+}

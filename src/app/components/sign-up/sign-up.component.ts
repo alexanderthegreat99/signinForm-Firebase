@@ -13,7 +13,9 @@ import { NgToastService } from 'ng-angular-popup';
 
 import { Router } from '@angular/router';
 import { switchMap} from 'rxjs';
-//import { UsersService } from 'src/app/services/users.service';
+import { UsersService } from 'src/app/services/users.service';
+import { user } from '@angular/fire/auth';
+
 
 export function passwordsMatchValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -42,7 +44,7 @@ export class SignUpComponent {
     confirmPassword: new FormControl(null, Validators.required),
   }, { validators: passwordsMatchValidator()})
 
-  constructor(private authService: AuthenticationService, private router: Router, private toast: NgToastService){}
+  constructor(private authService: AuthenticationService, private router: Router, private toast: NgToastService,  private usersService: UsersService,){}
   passwordsMinLength(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const password = control.get('password')?.value;
@@ -82,16 +84,20 @@ export class SignUpComponent {
     if (!this.signUpForm.valid || !name || !password || !email) {
       return;
     }
-
+    console.log(user);
     this.authService
-    .signUp(name, email, password)
-    
+    .signUp(email, password).pipe(
+      switchMap(({user: { uid}})=> this.usersService.addUser({uid, email, displayName: name}))
+    )
+  
     .subscribe(() => {
+      
       this.toast.success({detail:"SUCCESS",summary:'You Sucessfully Signed Up!', duration: 5000});
 
       this.router.navigate(['/home']);
     }, err=>{
       this.toast.error({detail:"ERROR",summary:'Sign Up failed! Try again.', duration: 5000})
+      console.log(err);
     });
     
     

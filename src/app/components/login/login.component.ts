@@ -36,6 +36,9 @@ export class LoginComponent implements OnInit{
     }, err=>{
       this.toast.error({detail:"ERROR",summary:'Login failed! Try again.', duration: 5000})
     });
+    this.authService.currentUser$.subscribe((user) => {
+      console.log('Current user:', user);
+    });
    console.log(this.loginForm.value);
     console.log(this.loginForm);
     this.loginForm.reset();

@@ -18,7 +18,7 @@ export class AuthenticationService {
   currentUser$ = authState(this.auth);
   constructor(private auth: Auth) { 
     authState(this.auth).subscribe((response)=>{
-      console.log(response);
+      console.log("auth: "+response);
     });
   }
   
@@ -35,9 +35,8 @@ export class AuthenticationService {
         })
       );
     }
-  signUp(name: string, email: string, password: string) {
-    return from(createUserWithEmailAndPassword(this.auth, email, password)).
-    pipe(switchMap(({user})=> updateProfile(user, {displayName:name})));
+  signUp(email: string, password: string) {
+    return from(createUserWithEmailAndPassword(this.auth, email, password));
   }
 
   logout(){
